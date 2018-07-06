@@ -78,20 +78,12 @@ def get_input(msg, userid):#отправка сообщения
         write_msg(userid, comfunc(msg[1:]), '')#отправка текста
     else:
         write_msg(userid, "напиши !команды", "")
-        
-    
-
-
-
-
 
 while True: #обработка сообщений
     try:
         response = vk.method('messages.get', values)
         if response['items']:
             values['last_message_id'] = response['items'][0]['id']
-            
-            
             msg = response['items'][0]['body'].split()
             usrid = response['items'][0]['user_id']
             get_input(msg, usrid)
